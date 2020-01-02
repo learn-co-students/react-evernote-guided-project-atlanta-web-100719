@@ -4,7 +4,6 @@ import Sidebar from './Sidebar';
 import Content from './Content';
 
 class NoteContainer extends Component {
-
   constructor(props) {
     super(props)
 
@@ -12,23 +11,34 @@ class NoteContainer extends Component {
       currentNote: "",
       searchTerm: ""
     }
-  }
+  }//end of constructor
 
-
-  handleDetailClick = (note) => {
+  handleClickDetail = (note) => {
     this.setState({
       currentNote: note
     })
   }
 
+  handleSearch = (event) => {
+    const searchTerm = event.target.value
+    this.setState({searchTerm})
+  }
+
+  notesToDisplay = () => {
+    const results = this.props.notes.filter((note) => {
+      return note.title.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+    })
+    return results
+  }//end of function
+
 
   render() {
     return (
       <Fragment>
-        <Search />
+        <Search filteredNotes={this.notesToDisplay()} handleSearch={this.handleSearch} />
         <div className='container'>
-          <Sidebar userArray={this.props.userArray}/>
-          <Content />
+          <Sidebar notes={this.notesToDisplay()} handleClickDetail={this.handleClickDetail} newNote={this.props.newNote}/>
+          <Content currentNote={this.state.currentNote} notes={this.props.notes} handleUpdate={this.props.handleUpdate} handleDelete={this.props.handleDelete}/>
         </div>
       </Fragment>
     );
