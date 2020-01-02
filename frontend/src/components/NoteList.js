@@ -2,9 +2,23 @@ import React from 'react';
 import NoteItem from './NoteItem';
 
 const NoteList = (props) => {
+  
   return (
     <ul>
-      {props.userArray.map((user) => user.notes.map((note) => <NoteItem title={note.title} body={note.body}/> ))}
+      {
+      	props.notes.map(function(note){
+      	
+      		return <NoteItem 
+      		key={note.id}
+      		noteId={note.id}
+      		title={note.title}
+      		body={note.body.substring(0,16)+'...'}
+      		handleClick={props.handleClick}
+      		/>
+
+      	})
+
+      }
     </ul>
   );
 }
