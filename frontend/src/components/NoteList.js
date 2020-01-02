@@ -4,8 +4,7 @@ import NoteItem from './NoteItem';
 const NoteList = (props) => {
   return (
     <ul>
-      {/* Render list of notes here... */}
-      <NoteItem />
+      {props.userArray.map((user) => user.notes.map((note) => <NoteItem title={note.title} body={note.body}/> ))}
     </ul>
   );
 }
