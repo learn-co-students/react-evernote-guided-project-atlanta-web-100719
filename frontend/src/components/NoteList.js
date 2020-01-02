@@ -6,8 +6,7 @@ const NoteList = (props) => {
   return (
     <ul>
       {
-      	props.notes.map(function(note){
-      	
+      	props.notes.map(function(note){	
       		return <NoteItem 
       		key={note.id}
       		noteId={note.id}
@@ -15,9 +14,7 @@ const NoteList = (props) => {
       		body={note.body.substring(0,16)+'...'}
       		handleClick={props.handleClick}
       		/>
-
       	})
-
       }
     </ul>
   );

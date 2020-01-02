@@ -6,16 +6,19 @@ import Instructions from './Instructions';
 class Content extends Component {
 
 
-  renderContent = (arg) => {
-    if (arg==='edit') {
+  renderContent = (usrInput) => {
+    
+    if (usrInput === 'edit') {
       return <NoteEditor editBody={this.props.editBody} editTitle={this.props.editTitle} notes={this.props.notes} selectedNote={this.props.selectedNote}
       handleTitleEditChange={this.props.handleTitleEditChange} handleSaveClick={this.props.handleSaveClick}
       handleBodyEditChange={this.props.handleBodyEditChange} handleCancelClick={this.props.handleCancelClick}/> 
-    } else if (arg==='show') {
+    } 
+    else if (usrInput === 'show') {
       return <NoteViewer allProps={this.props}
       handleEditClick={this.props.handleEditClick}
       />;
-    } else {
+    } 
+    else {
       return <Instructions />;
     }
   }

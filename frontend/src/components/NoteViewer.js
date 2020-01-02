@@ -1,11 +1,9 @@
 import React, { Fragment } from 'react';
 
 const NoteViewer = (props) => {
+  
 	const notes = props.allProps.notes
-	
-
 	const selectedNoteId = props.allProps.selectedNote
-	
 	const selectedNote = notes.find(function(note){return note.id === selectedNoteId})
 
   return (

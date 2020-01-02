@@ -5,11 +5,10 @@ class NoteEditor extends Component {
 
   render() {
 
-const notes = this.props.notes
-
-  const selectedNoteId = this.props.selectedNote
-  const selectedNote = notes.find(function(note){return note.id === selectedNoteId})
-  
+    const notes = this.props.notes
+    const selectedNoteId = this.props.selectedNote
+    const selectedNote = notes.find(function(note){return note.id === selectedNoteId})
+    
 
     return (
       <form className="note-editor" onSubmit={(e)=>{this.props.handleSaveClick(e)}}>

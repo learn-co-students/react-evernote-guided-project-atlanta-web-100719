@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Search = (props) => {
+
   return (
     <div className="filter">
       <input onChange={(e)=>props.handleSearchInput(e)}
@@ -11,6 +12,7 @@ const Search = (props) => {
       />
     </div>
   );
+  
 }
 
 export default Search;

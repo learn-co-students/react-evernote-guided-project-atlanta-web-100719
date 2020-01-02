@@ -16,13 +16,12 @@ state = {
 
 componentDidMount() {
     fetch("http://localhost:3000/api/v1/notes")
-    .then(r=>r.json())
+    .then(res=>res.json())
     .then(notes=>this.setState({notes:notes}))
   }
 
 
   handleClick = (noteId) => {
-    // console.log("Note id is :", noteId)
     this.setState({clickedNote: noteId, status: "show"})
   }
 
@@ -51,7 +50,7 @@ componentDidMount() {
       ).then(res=>{this.componentDidMount()})
 
 
-  }//function ender 
+  }
 
   handleTitleEditChange = (e) => {
       this.setState({editTitle:e.target.value})
@@ -112,16 +111,16 @@ componentDidMount() {
 
 
   render() {
-    console.log(this.state.sortNotes)
+
     return (
       <Fragment>
-          <button onClick={()=>{this.sortNotes()}}>sort Notes</button>
+        <button onClick={()=>{this.sortNotes()}}>sort Notes</button>
         <Search handleSearchInput={this.handleSearchInput} search={this.state.search}/>
         <div className='container'>
           <Sidebar notes={this.filterNotes(this.state.search)} handleClick={this.handleClick} handleNewClick={this.handleNewClick} />
           <Content editTitle={this.state.editTitle} editBody={this.state.editBody} notes={this.state.notes} selectedNote={this.state.clickedNote} status={this.state.status} 
-          handleEditClick={this.handleEditClick} handleSaveClick={this.handleSaveClick} handleTitleEditChange={this.handleTitleEditChange}
-          handleBodyEditChange={this.handleBodyEditChange} handleCancelClick={this.handleCancelClick}
+            handleEditClick={this.handleEditClick} handleSaveClick={this.handleSaveClick} handleTitleEditChange={this.handleTitleEditChange}
+            handleBodyEditChange={this.handleBodyEditChange} handleCancelClick={this.handleCancelClick}
           />
         </div>
       </Fragment>
